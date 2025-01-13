@@ -9,6 +9,6 @@
     </record>
 
     <!-- This Menu Item must have a parent and an action -->
-    <menuitem id="course_menu_act" name="Course" parent="" action="fajaracademy.course_action" sequence="10"/>
+    <menuitem id="fajaracademy.course_menu_act" name="Course" parent="fajaracademy.fajaracademy_menu_root" action="fajaracademy.course_action" sequence="10"/>
 
 </odoo>
