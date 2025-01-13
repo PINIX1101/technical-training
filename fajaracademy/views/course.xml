@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- course action window -->
+    <record id="fajaracademy.course_action" model="ir.actions.act_window">
+        <field name="name">course.action</field>
+        <field name="res_model">course</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="course_menu_act" name="Course" parent="" action="fajaracademy.course_action" sequence="10"/>
+
+</odoo>
