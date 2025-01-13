@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="course_odoo_technical" model="course">
+        <field name="name">Course Odoo Technical</field>
+        <field name="description">Course Technical Odoo 17 Enterprise Edition</field>
+    </record>
+
+    <record id="course_react_js" model="course">
+        <field name="name">Course ReactJS</field>
+        <field name="description">Course ReactJS for Beginner</field>
+    </record>
+
+</odoo>

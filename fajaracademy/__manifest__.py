@@ -24,6 +24,7 @@ This Module is use for Arkana Training
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'data/course_data.xml',
         'views/views.xml',
         'views/templates.xml',
     ],
