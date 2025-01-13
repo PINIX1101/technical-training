@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- course tree view -->
+    <record id="fajaracademy.course_view_tree" model="ir.ui.view">
+        <field name="name">course.view.tree</field>
+        <field name="model">course</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- course form view -->
+    <record id="course_view_form" model="ir.ui.view">
+        <field name="name">course.view.form</field>
+        <field name="model">course</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- course search view -->
+    <record id="fajaracademy.course_view_search" model="ir.ui.view">
+        <field name="name">course.view.search</field>
+        <field name="model">course</field>
+        <field name="arch" type="xml">
+            <search string="Search Description">
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="description"/>
+            </search>
+        </field>
+    </record>
+
     <!-- course action window -->
     <record id="fajaracademy.course_action" model="ir.actions.act_window">
         <field name="name">course.action</field>
