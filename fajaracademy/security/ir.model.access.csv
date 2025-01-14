@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_fajaracademy_course,fajaracademy.course,model_course,,1,1,1,1
+access_fajaracademy_session,fajaracademy.session,model_session,,1,1,1,1

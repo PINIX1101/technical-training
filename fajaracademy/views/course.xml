@@ -50,7 +50,7 @@
 
     <!-- course action window -->
     <record id="fajaracademy.course_action" model="ir.actions.act_window">
-        <field name="name">course.action</field>
+        <field name="name">Course</field>
         <field name="res_model">course</field>
         <field name="view_mode">tree,form</field>
     </record>

@@ -27,6 +27,7 @@ This Module is use for Arkana Training
         'data/course_data.xml',
         'views/menu.xml',
         'views/course.xml',
+        'views/session.xml',
         'views/views.xml',
         'views/templates.xml',
     ],

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- session tree view -->
+    <record id="session_view_tree" model="ir.ui.view">
+        <field name="name">session.view.tree</field>
+        <field name="model">session</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="duration"/>
+                <field name="number_of_seats"/>
+                <field name="description"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- session form view -->
+    <record id="session_view_form" model="ir.ui.view">
+        <field name="name">session.view.form</field>
+        <field name="model">session</field>
+        <field name="arch" type="xml">
+            <form string="Session">
+                <header>
+                    <button string="Confim" name="action_confirm" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button string="Mark as Done" name="action_done" type="object" class="oe_highlight" invisible="state != 'running'"/>
+                    <button string="Reset to Draft" name="action_draft" type="object" class="oe_highlight" invisible="state not in ['running', 'closed']"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Session Name" />
+                        <h1><field name="name" /></h1>
+                    </div>
+                    <group>
+                        <!-- Add your fields here -->
+                        <group>
+                            <field name="start_date"/>
+                            <field name="number_of_seats"/>
+                        </group>
+                        <group>
+                            <field name="duration"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- session action window -->
+    <record id="session_action" model="ir.actions.act_window">
+        <field name="name">Session</field>
+        <field name="res_model">session</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="session_menu_act" name="Session" parent="fajaracademy.fajaracademy_menu_root" action="session_action" sequence="20"/>
+
+</odoo>
