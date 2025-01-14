@@ -6,7 +6,7 @@
         <field name="name">session.view.tree</field>
         <field name="model">session</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-info="duration &lt; 5" decoration-danger="duration &gt; 15">
                 <!-- Add your fields here -->
                 <field name="name"/>
                 <field name="start_date"/>
@@ -54,7 +54,13 @@
                                 <field name="description"/>
                             </page>
                             <page string="Attendes">
-                                <field name="partner_ids"/>
+                                <field name="partner_ids">
+                                    <tree editable='bottom'>
+                                        <field name="name"/>
+                                        <field name="phone"/>
+                                        <field name="email"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
                     </group>

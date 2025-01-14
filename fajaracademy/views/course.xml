@@ -32,7 +32,17 @@
                             <field name="description"/>
                         </page>
                         <page string="Session">
-                            <field name="session_ids"/>
+                            <field name="session_ids">
+                                <tree editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="start_date"/>
+                                    <field name="partner_id"/>
+                                    <field name="duration"/>
+                                    <field name="number_of_seats"/>
+                                    <field name="taken_seats" widget="progressbar"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>
