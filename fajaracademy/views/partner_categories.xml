@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- partner.categories tree view -->
+    <record id="partner_categories_view_tree" model="ir.ui.view">
+        <field name="name">partner.categories.view.tree</field>
+        <field name="model">partner.categories</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <!-- Add your fields here -->
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- partner.categories action window -->
+    <record id="partner_categories_action" model="ir.actions.act_window">
+        <field name="name">Partner Categories</field>
+        <field name="res_model">partner.categories</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="partner_categories_menu_act" name="Partner Categories" parent="contacts.res_partner_menu_config" action="partner_categories_action" sequence="1"/>
+
+</odoo>

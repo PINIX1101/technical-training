@@ -31,6 +31,7 @@ This Module is use for Arkana Training
         'views/course.xml',
         'views/session.xml',
         'views/res_partner.xml',
+        'views/partner_categories.xml',
         'views/views.xml',
         'views/templates.xml',
     ],
