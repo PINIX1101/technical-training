@@ -14,7 +14,7 @@
                 <field name="partner_id"/>
                 <field name="duration"/>
                 <field name="number_of_seats"/>
-                <field name="description"/>
+                <field name="taken_seats" widget="progressbar"/>
                 <field name="state"/>
             </tree>
         </field>
@@ -47,6 +47,7 @@
                         <group>
                             <field name="number_of_seats"/>
                             <field name="duration"/>
+                            <field name="taken_seats" widget="progressbar"/>
                         </group>
                         <notebook>
                             <page string="Description">
