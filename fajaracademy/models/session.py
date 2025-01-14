@@ -19,6 +19,7 @@ class Session(models.Model):
     course_id = fields.Many2one('course', string='Course')
     partner_ids = fields.Many2many('res.partner', string='partner')
     taken_seats = fields.Float(compute='_compute_taken_seats', string='Taken Seats')
+    active = fields.Boolean('Active', default=True)
     
     @api.depends('number_of_seats','partner_ids')
     def _compute_taken_seats(self):
