@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- session calendar view -->
+    <record id="session_view_calendar" model="ir.ui.view">
+        <field name="name">session.view.calendar</field>
+        <field name="model">session</field>
+        <field name="arch" type="xml">
+            <calendar string="Session" date_start="start_date" color="course_id">
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="partner_id"/>
+            </calendar>
+        </field>
+    </record>
+
     <!-- session tree view -->
     <record id="session_view_tree" model="ir.ui.view">
         <field name="name">session.view.tree</field>
@@ -73,7 +86,7 @@
     <record id="session_action" model="ir.actions.act_window">
         <field name="name">Session</field>
         <field name="res_model">session</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,calendar</field>
     </record>
 
     <!-- This Menu Item must have a parent and an action -->
