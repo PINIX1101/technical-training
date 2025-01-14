@@ -10,6 +10,7 @@
             <!-- Add your xpath here -->
             <field name="vat" position="after">
                 <field name="is_instructor"/>
+                <field name="partner_category_id"/>
             </field>
 
             <xpath expr="//notebook/page[@name='internal_notes']" position="after">
