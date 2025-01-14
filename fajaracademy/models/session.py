@@ -1,4 +1,5 @@
 from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class Session(models.Model):
@@ -45,6 +46,12 @@ class Session(models.Model):
                     'message': "Participants more than seats"
                 }
             }
+        
+    @api.constrains('partner_id', 'partner_ids')
+    def _constrains_instructor_attendes(self):
+        for rec in self:
+            if rec.partner_id in rec.partner_ids:
+                raise ValidationError('Instructor cannot be Attendee: {}'.format(rec.partner_id.name))
 
     def action_confirm(self):
         self.state = 'running'
