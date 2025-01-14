@@ -17,7 +17,7 @@ class Session(models.Model):
     description = fields.Text('Description')
     partner_id = fields.Many2one('res.partner', string='Instructior', domain="['|',('is_instructor', '=', True), ('partner_category_id', '!=', False)]")
     course_id = fields.Many2one('course', string='Course')
-    partner_ids = fields.Many2many('res.partner', string='partner')
+    partner_ids = fields.Many2many('res.partner', string='Attendees')
     taken_seats = fields.Float(compute='_compute_taken_seats', string='Taken Seats')
     active = fields.Boolean('Active', default=True)
     
@@ -28,6 +28,23 @@ class Session(models.Model):
                 rec.taken_seats = len(rec.partner_ids)/rec.number_of_seats*100
             else:
                 rec.taken_seats = 0
+
+    @api.onchange('number_of_seats', 'partner_ids')
+    def _onchange_participants(self):
+        if self.number_of_seats < 0:
+            return {
+                'warning': {
+                    'title': "Invalid Value",
+                    'message': "Cannot input negative value on Number of Seats"
+                }
+            }
+        if self.number_of_seats < len(self.partner_ids):
+            return {
+                'warning': {
+                    'title': "Invalid Value",
+                    'message': "Participants more than seats"
+                }
+            }
 
     def action_confirm(self):
         self.state = 'running'

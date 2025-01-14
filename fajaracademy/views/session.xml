@@ -53,6 +53,9 @@
                             <page string="Description">
                                 <field name="description"/>
                             </page>
+                            <page string="Attendes">
+                                <field name="partner_ids"/>
+                            </page>
                         </notebook>
                     </group>
                 </sheet>
