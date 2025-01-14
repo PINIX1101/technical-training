@@ -15,6 +15,9 @@ class Session(models.Model):
         ('closed', 'Closed'),
     ], string='State',default="draft")
     description = fields.Text('Description')
+    partner_id = fields.Many2one('res.partner', string='Instructior')
+    course_id = fields.Many2one('course', string='Course')
+    partner_ids = fields.Many2many('res.partner', string='partner')
 
     def action_confirm(self):
         self.state = 'running'
