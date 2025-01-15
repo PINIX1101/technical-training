@@ -43,6 +43,7 @@
                     <button string="Confim" name="action_confirm" type="object" class="oe_highlight" invisible="state != 'draft'" groups="fajaracademy.group_manager"/>
                     <button string="Mark as Done" name="action_done" type="object" class="oe_highlight" invisible="state != 'running'" groups="fajaracademy.group_manager"/>
                     <button string="Reset to Draft" name="action_draft" type="object" class="oe_highlight" invisible="state not in ['running', 'closed']" groups="fajaracademy.group_manager"/>
+                    <button string="Add Attendees" name="fajaracademy.add_attendees_action" type="action" class="oe_highlight"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
