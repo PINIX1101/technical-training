@@ -82,11 +82,24 @@
         </field>
     </record>
 
+    <!-- session graph view -->
+    <record id="session_view_graph" model="ir.ui.view">
+        <field name="name">session.view.graph</field>
+        <field name="model">session</field>
+        <field name="arch" type="xml">
+            <graph string="Graph Session">
+                <!-- Add your fields here -->
+                <field name="course_id"/>
+                <field name="number_of_attendees" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
     <!-- session action window -->
     <record id="session_action" model="ir.actions.act_window">
         <field name="name">Session</field>
         <field name="res_model">session</field>
-        <field name="view_mode">tree,form,calendar</field>
+        <field name="view_mode">tree,form,calendar,graph</field>
     </record>
 
     <!-- This Menu Item must have a parent and an action -->
