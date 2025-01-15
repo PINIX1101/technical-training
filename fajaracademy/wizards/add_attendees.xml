@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- add.attendees form view -->
+    <record id="add_attendees_view_form" model="ir.ui.view">
+        <field name="name">add.attendees.view.form</field>
+        <field name="model">add.attendees</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="session_ids" widget="many2many_tags"/>
+                    </group>
+                    <notebook>
+                        <page name="partner_ids" string="Attendees">
+                            <field name="partner_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button string="Confirm" name="confirm" type="object" class="oe_highlight"/>
+                    <button string="Confirm" special="cancel" type="object"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- add.attendees action window -->
+    <record id="add_attendees_action" model="ir.actions.act_window">
+        <field name="name">Add Attendees</field>
+        <field name="res_model">add.attendees</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_session"/>
+        <field name="context">{'default_session_ids': active_ids}</field>
+    </record>
+
+</odoo>

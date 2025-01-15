@@ -35,6 +35,8 @@ This Module is use for Arkana Training
         'views/partner_categories.xml',
         'views/views.xml',
         'views/templates.xml',
+
+        'wizards/add_attendees.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

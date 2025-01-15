@@ -1,6 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_fajaracademy_course,fajaracademy.course,model_course,fajaracademy.group_manager,1,1,1,1
 access_fajaracademy_session,fajaracademy.session,model_session,fajaracademy.group_manager,1,1,1,1
+access_fajaracademy_add_attendees,fajaracademy.add_attendees,model_add_attendees,,1,1,1,1
 
 access_fajaracademy_course_user,fajaracademy.course.user,model_course,fajaracademy.group_user,1,0,0,0
 access_fajaracademy_session_user,fajaracademy.session.user,model_session,fajaracademy.group_user,1,0,0,0
