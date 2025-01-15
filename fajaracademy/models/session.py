@@ -1,5 +1,6 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from dateutil.relativedelta import relativedelta
 
 
 class Session(models.Model):
@@ -22,6 +23,12 @@ class Session(models.Model):
     taken_seats = fields.Float(compute='_compute_taken_seats', string='Taken Seats')
     active = fields.Boolean('Active', default=True)
     number_of_attendees = fields.Float(compute='_compute_number_of_attendees', string='Number of Attendees',store=True)
+    stop_date = fields.Date(compute='_compute_stop_date', string='Stop Date')
+    
+    @api.depends('start_date','duration')
+    def _compute_stop_date(self):
+        for rec in self:
+            rec.stop_date = rec.start_date + relativedelta(days=+rec.duration)
     
     @api.depends('partner_ids')
     def _compute_number_of_attendees(self):

@@ -131,11 +131,25 @@
         </field>
     </record>
 
+    <!-- session gantt view -->
+    <record id="session_view_gantt" model="ir.ui.view">
+        <field name="name">session.view.gantt</field>
+        <field name="model">session</field>
+        <field name="arch" type="xml">
+            <gantt string="Gantt Session" date_start="start_date" date_stop="stop_date" default_group_by='partner_id'>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="course_id"/>
+                <field name="partner_id"/>
+            </gantt>
+        </field>
+    </record>
+
     <!-- session action window -->
     <record id="session_action" model="ir.actions.act_window">
         <field name="name">Session</field>
         <field name="res_model">session</field>
-        <field name="view_mode">tree,form,calendar,graph,kanban</field>
+        <field name="view_mode">tree,form,calendar,graph,kanban,gantt</field>
     </record>
 
     <!-- This Menu Item must have a parent and an action -->
