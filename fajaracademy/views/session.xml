@@ -40,9 +40,9 @@
         <field name="arch" type="xml">
             <form string="Session">
                 <header>
-                    <button string="Confim" name="action_confirm" type="object" class="oe_highlight" invisible="state != 'draft'"/>
-                    <button string="Mark as Done" name="action_done" type="object" class="oe_highlight" invisible="state != 'running'"/>
-                    <button string="Reset to Draft" name="action_draft" type="object" class="oe_highlight" invisible="state not in ['running', 'closed']"/>
+                    <button string="Confim" name="action_confirm" type="object" class="oe_highlight" invisible="state != 'draft'" groups="fajaracademy.group_manager"/>
+                    <button string="Mark as Done" name="action_done" type="object" class="oe_highlight" invisible="state != 'running'" groups="fajaracademy.group_manager"/>
+                    <button string="Reset to Draft" name="action_draft" type="object" class="oe_highlight" invisible="state not in ['running', 'closed']" groups="fajaracademy.group_manager"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
