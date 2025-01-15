@@ -95,11 +95,47 @@
         </field>
     </record>
 
+    <!-- session kanban view -->
+    <record id="session_view_kanban" model="ir.ui.view">
+        <field name="name">session.view.kanban</field>
+        <field name="model">session</field>
+        <field name="arch" type="xml">
+            <kanban string="Kanban Session">
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="course_id"/>
+                <field name="partner_id"/>
+                <field name="duration"/>
+                <field name="number_of_seats"/>
+                <field name="taken_seats" widget="progressbar"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="row">
+                                <div class="col-12">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                </div>
+                            </div>
+                            <div>
+                                <field name="course_id"/>
+                                <br/><field name="partner_id"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
     <!-- session action window -->
     <record id="session_action" model="ir.actions.act_window">
         <field name="name">Session</field>
         <field name="res_model">session</field>
-        <field name="view_mode">tree,form,calendar,graph</field>
+        <field name="view_mode">tree,form,calendar,graph,kanban</field>
     </record>
 
     <!-- This Menu Item must have a parent and an action -->
