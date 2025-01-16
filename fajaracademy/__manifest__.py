@@ -37,6 +37,8 @@ This Module is use for Arkana Training
         'views/templates.xml',
 
         'wizards/add_attendees.xml',
+
+        'report/session_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
