@@ -1,6 +1,8 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 from dateutil.relativedelta import relativedelta
+from io import BytesIO
+import base64, xlsxwriter
 
 
 class Session(models.Model):
@@ -24,6 +26,7 @@ class Session(models.Model):
     active = fields.Boolean('Active', default=True)
     number_of_attendees = fields.Float(compute='_compute_number_of_attendees', string='Number of Attendees',store=True)
     stop_date = fields.Date(compute='_compute_stop_date', string='Stop Date')
+    excel_report = fields.Binary('Excel Report')
     
     @api.depends('start_date','duration')
     def _compute_stop_date(self):
@@ -74,3 +77,46 @@ class Session(models.Model):
 
     def action_done(self):
         self.state = 'closed'
+
+    def action_excel_report(self):
+        fp = BytesIO()
+        workbook = xlsxwriter.Workbook(fp)
+
+        worksheet = workbook.add_worksheet(self.name)
+        worksheet.merge_range('A1:D1', 'Session')
+        worksheet.write('A2', 'Start Date')
+        worksheet.write('B2', self.start_date.strftime('%d/%m/%Y'))
+        worksheet.write('A3', 'End Date')
+        worksheet.write('B3', self.stop_date.strftime('%d/%m/%Y'))
+
+        row, col = 4, 0
+        headers = ('no', 'name', 'phone', 'email')
+        for header in headers:
+            worksheet.write(row, col, header.title())
+            col += 1
+
+        col = 0
+        row += 1
+        number = 1
+        for partner in self.partner_ids:
+            for header in headers:
+                if header == 'no':
+                    worksheet.write(row, col, number)
+                else:
+                    worksheet.write(row, col, partner[header])
+                col += 1
+            
+            row += 1
+            col = 0
+        
+        workbook.close()
+        self.excel_report = base64.encodebytes(fp.getvalue())
+        fp.close()
+
+        return {
+            "type": "ir.actions.act_url",
+            "url": "web/content/?model={}&field={}&download=true&id={}&filename={}".format(
+                self._name, 'excel_report', self.id, self.name
+            ),
+            "target": "new",
+        }
